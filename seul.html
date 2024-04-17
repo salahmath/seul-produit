@@ -16,7 +16,7 @@
     </div>
 
     <!-- Affichage du code QR dans une image -->
-    <img id="qr-code-img" src="" alt="Code QR" />
+    <img id="qr-code-img" src="qrCodeImg" alt="Code QR" />
 
     <script>
         // Fonction pour parser les paramètres d'URL
@@ -57,7 +57,7 @@
 
         // Récupération de l'URL du code QR et affichage dans l'image
         const qrCodeUrl = urlParams["url"];
-        const qrCodeImg = document.getElementById("qr-code-img");
+        const qrCodeImg = document.getElementById("img");
         qrCodeImg.src = qrCodeUrl;
 
         // Fonction pour imprimer la page
