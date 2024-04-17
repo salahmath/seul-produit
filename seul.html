@@ -15,8 +15,8 @@
             </div>
             <div class="col-md-auto">
                 <div id="product-info">
-                    <div><strong>Titre:</strong> <span id="product-title"></span></div>
-                    <div><strong>Quantité:</strong> <span id="product-quantity"></span></div>
+                    <div><strong>Titre:</strong> <span id="product-title">${title}</span></div>
+                    <div><strong>Quantité:</strong> <span id="product-quantity">${quantite}</span></div>
                     <div><strong>Prix:</strong> <span id="product-price"></span></div>
                     <div><strong>Marque:</strong> <span id="product-brand"></span></div>
                     <div><strong>Description:</strong> <span id="product-description"></span></div>
@@ -34,8 +34,8 @@
             const qrCodeUrl = urlParams["img"];
 
             // Affichage des informations du produit
-            document.getElementById("img").src = qrCodeUrl;
-            document.getElementById("title").textContent = urlParams["title"];
+            document.getElementById("qr-code-img").src = qrCodeUrl;
+            document.getElementById("product-title").textContent = urlParams["title"];
             document.getElementById("product-quantity").textContent = urlParams["quantite"];
             document.getElementById("product-price").textContent = urlParams["Prix"];
             document.getElementById("product-brand").textContent = urlParams["Marque"];
