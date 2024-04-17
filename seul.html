@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Produit</title>
 </head>
 <body>
-    <h1>Produit Odoo</h1>
-    <!-- Corrigez l'appel de fonction ici -->
-    <button onclick="printFunction()">Télécharger</button>
-    
-    <!-- Affichage des informations du produit dans des divs -->
-    <div id="product-info">
-        <!-- Les informations du produit seront affichées ici -->
+    <h1 class="text-center">Produit Odoo</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img id="qr-code-img" src="${qrCodeUrl}" alt="Code QR" />
+            </div>
+            <div class="col-md-auto">
+                <!-- Informations du produit -->
+                <div id="product-info">
+                    <div><strong>Titre:</strong> ${urlParams["title"]}</div>
+                    <div><strong>Quantité:</strong> ${urlParams["quantite"]}</div>
+                    <div><strong>Prix:</strong> ${urlParams["Prix"]}</div>
+                    <div><strong>Marque:</strong> ${urlParams["Marque"]}</div>
+                    <div><strong>Description:</strong> ${urlParams["description"]}</div>
+                    <div><strong>Couleur:</strong> ${urlParams["coleur"]}</div>
+                    <div><strong>Tags:</strong> ${urlParams["tags"]}</div>
+                </div>
+            </div>
+        </div>
     </div>
-    <img id="qr-code-img" src="${qrCodeUrl}" alt="Code QR" />
-
 
     <script>
         // Fonction pour parser les paramètres d'URL
@@ -43,27 +54,13 @@
 
         // Affichage des informations du produit
         const urlParams = getUrlParams();
-        const productInfoDiv = document.getElementById("product-info");
-        productInfoDiv.innerHTML += `
-            <div><strong>Titre:</strong> ${urlParams["title"]}</div>
-            <div><strong>Quantité:</strong> ${urlParams["quantite"]}</div>
-            <div><strong>Prix:</strong> ${urlParams["Prix"]}</div>
-            <div><strong>Marque:</strong> ${urlParams["Marque"]}</div>
-            <div><strong>Description:</strong> ${urlParams["description"]}</div>
-            <div><strong>Couleur:</strong> ${urlParams["coleur"]}</div>
-            <div><strong>Tags:</strong> ${urlParams["tags"]}</div>
-        `;
-
-        // Récupération de l'URL du code QR et affichage dans l'image
         const qrCodeUrl = urlParams["img"];
-        const qrCodeImg = document.getElementById("qr-code-img");
-        qrCodeImg.src = qrCodeUrl;
 
         // Fonction pour imprimer la page
         function printFunction() { 
             window.print(); 
         }
     </script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
