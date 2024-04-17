@@ -11,13 +11,12 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <img id="qr-code-img" src="${qrCodeUrl}" alt="Code QR" />
+                <img id="qr-code-img" src="${qrCodeUrl}" alt="Img" />
             </div>
             <div class="col-md-auto">
-                <!-- Informations du produit -->
                 <div id="product-info">
-                    <div><strong>Titre:</strong> ${urlParams["title"]}</div>
-                    <div><strong>Quantité:</strong> ${urlParams["quantite"]}</div>
+                    <div><strong>Titre:</strong> "${title}"</div>
+                    <div><strong>Quantité:</strong> ${title}</div>
                     <div><strong>Prix:</strong> ${urlParams["Prix"]}</div>
                     <div><strong>Marque:</strong> ${urlParams["Marque"]}</div>
                     <div><strong>Description:</strong> ${urlParams["description"]}</div>
@@ -55,6 +54,7 @@
         // Affichage des informations du produit
         const urlParams = getUrlParams();
         const qrCodeUrl = urlParams["img"];
+        const title = urlParams["title"];
 
         // Fonction pour imprimer la page
         function printFunction() { 
