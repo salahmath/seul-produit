@@ -14,14 +14,14 @@
                 <div class="card">
                     <img id="qr-code-img" src="${qrCodeUrl}" class="card-img-top" alt="aaa">
                     <div class="card-body text-center">
-                        <h5 class="card-title" id="product-title"><strong>Titre:</strong></h5>
+                        <h5 class="card-title"><strong>Titre:</strong> <span id="product-title"></span></h5>
                         <p class="card-text"><strong>Quantité:</strong> <span id="product-quantity"></span></p>
                         <p class="card-text"><strong>Prix:</strong> <span id="product-price"></span></p>
                         <p class="card-text"><strong>Marque:</strong> <span id="product-brand"></span></p>
                         <p class="card-text"><strong>Couleur:</strong> <span id="product-color"></span></p>
                         <p class="card-text"><strong>Tags:</strong> <span id="product-tags"></span></p>
-                        
                     </div>
+                    
                 </div>
             </div>
             <div class="col-sm-6 col-md-8">
@@ -80,6 +80,22 @@
 
         // Appel de la fonction pour afficher les informations du produit lors du chargement de la page
         displayProductInfo();
+        const cardBody = document.querySelector('.card-body');
+
+// Créez les éléments HTML dynamiquement
+const descriptionWrapper = document.createElement('div');
+descriptionWrapper.classList.add('text-break');
+
+const strongElement = document.createElement('strong');
+strongElement.textContent = 'Description:';
+
+const spanElement = document.createElement('span');
+spanElement.id = 'product-description';
+
+// Ajoutez les éléments créés à la structure HTML
+descriptionWrapper.appendChild(strongElement);
+descriptionWrapper.appendChild(spanElement);
+cardBody.appendChild(descriptionWrapper);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
