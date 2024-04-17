@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produit</title>
+</head>
+<body>
+    <h1>Produit Odoo</h1>
+    <!-- Corrigez l'appel de fonction ici -->
+    <button onclick="printFunction()">Télécharger</button>
+    
+    <!-- Affichage des informations du produit dans des divs -->
+    <div id="product-info">
+        <!-- Les informations du produit seront affichées ici -->
+    </div>
+
+    <!-- Affichage du code QR dans une image -->
+    <img id="qr-code-img" src="" alt="Code QR" />
+
+    <script>
+        // Fonction pour parser les paramètres d'URL
+        function parseURLParams(url) {
+            const params = {};
+            const urlParts = url.split("?");
+            if (urlParts.length > 1) {
+                const queryString = urlParts[1];
+                const keyValuePairs = queryString.split("&");
+                keyValuePairs.forEach(keyValue => {
+                    const pair = keyValue.split("=");
+                    const key = decodeURIComponent(pair[0]);
+                    const value = decodeURIComponent(pair[1] || "");
+                    params[key] = value;
+                });
+            }
+            return params;
+        }
+
+        // Fonction pour récupérer les paramètres d'URL de l'URL actuelle
+        function getUrlParams() {
+            const url = window.location.href;
+            return parseURLParams(url);
+        }
+
+        // Affichage des informations du produit
+        const urlParams = getUrlParams();
+        const productInfoDiv = document.getElementById("product-info");
+        productInfoDiv.innerHTML += `
+            <div><strong>Titre:</strong> ${urlParams["title"]}</div>
+            <div><strong>Quantité:</strong> ${urlParams["quantite"]}</div>
+            <div><strong>Prix:</strong> ${urlParams["Prix"]}</div>
+            <div><strong>Marque:</strong> ${urlParams["Marque"]}</div>
+            <div><strong>Description:</strong> ${urlParams["description"]}</div>
+            <div><strong>Couleur:</strong> ${urlParams["coleur"]}</div>
+            <div><strong>Tags:</strong> ${urlParams["tags"]}</div>
+        `;
+
+        // Récupération de l'URL du code QR et affichage dans l'image
+        const qrCodeUrl = urlParams["url"];
+        const qrCodeImg = document.getElementById("qr-code-img");
+        qrCodeImg.src = qrCodeUrl;
+
+        // Fonction pour imprimer la page
+        function printFunction() { 
+            window.print(); 
+        }
+    </script>
+    
+</body>
+</html>
