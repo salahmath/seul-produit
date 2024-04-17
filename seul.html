@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,14 +13,13 @@
                 <div class="card">
                     <img id="qr-code-img" src="${qrCodeUrl}" class="card-img-top" alt="aaa">
                     <div class="card-body text-center">
-    <h5 class="card-title"><strong>Titre:</strong> <span id="product-title"></span></h5>
-    <p class="card-text"><strong>Quantité:</strong> <span id="product-quantity"></span></p>
-    <p class="card-text"><strong>Prix:</strong> <span id="product-price"></span></p>
-    <p class="card-text"><strong>Marque:</strong> <span id="product-brand"></span></p>
-    <p class="card-text"><strong>Couleur:</strong> <span id="product-color"></span></p>
-    <p class="card-text"><strong>Tags:</strong> <span id="product-tags"></span></p>
-</div>
-
+                        <h5 class="card-title"><strong>Titre:</strong> <span id="product-title"></span></h5>
+                        <p class="card-text"><strong>Quantité:</strong> <span id="product-quantity"></span></p>
+                        <p class="card-text"><strong>Prix:</strong> <span id="product-price"></span></p>
+                        <p class="card-text"><strong>Marque:</strong> <span id="product-brand"></span></p>
+                        <p class="card-text"><strong>Couleur:</strong> <span id="product-color"></span></p>
+                        <p class="card-text"><strong>Tags:</strong> <span id="product-tags"></span></p>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-8">
@@ -29,14 +27,12 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="text-break"><strong>Description:</strong> <span id="product-description"></span></div>
-                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
 
     <script>
         // Fonction pour afficher les informations du produit
@@ -50,9 +46,22 @@
             document.getElementById("product-quantity").textContent = urlParams["quantite"];
             document.getElementById("product-price").textContent = urlParams["Prix"];
             document.getElementById("product-brand").textContent = urlParams["Marque"];
-            document.getElementById("product-description").textContent = urlParams["description"];
+            document.getElementById("product-description").textContent = escapeHtml(urlParams["description"]); // Échapper les caractères HTML
             document.getElementById("product-color").textContent = urlParams["coleur"];
             document.getElementById("product-tags").textContent = urlParams["tags"];
+        }
+
+        // Fonction pour échapper les caractères spéciaux HTML
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
 
         // Fonction pour parser les paramètres d'URL
@@ -81,9 +90,8 @@
         // Appel de la fonction pour afficher les informations du produit lors du chargement de la page
         displayProductInfo();
         const cardBody = document.querySelector('.card-body');
-
-
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
