@@ -11,8 +11,16 @@
     <div class="container text-center">
         <div class="row ">
             <div class="col-4">
-                <img class="img-fluid" id="qr-code-img" src="${qrCodeUrl}" alt="Img" />
-                
+                <img class="img-fluid"  alt="Img" />
+                <div class="card" style="width: 18rem;">
+                    <img id="qr-code-img" src="${qrCodeUrl}" class="card-img-top" alt="aaa">
+                    <div class="card-body">
+                      <h5 class="card-title"  id="product-title"></h5>
+
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
             </div>
             
             <div class="col-8">
@@ -20,7 +28,6 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="text-break"><strong>Quantité:</strong> <span id="product-quantity">${quantite}</span></div>
-                            <div class="text-break"><strong>Titre:</strong> <span id="product-title">${title}</span></div>
                             <div class="text-break"><strong>Prix:</strong> <span id="product-price"></span></div>
                             <div class="text-break"><strong>Marque:</strong> <span id="product-brand"></span></div>
                             <div class="text-break"><strong>Description:</strong> <span id="product-description"></span></div>
